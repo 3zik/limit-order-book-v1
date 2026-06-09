@@ -23,7 +23,7 @@ In progress. Core matching engine, **aggregated level data**, and **mutex-protec
 ## Order types (implementation checklist)
 
 - [x] Good-Till-Cancel
-- [x] Fill-and-Kill (IOC): no rest if no immediate match; resting remainder on the best queue canceled after match pass
+- [x] Fill-and-Kill (IOC): Immediate-Or-Cancel - no rest if no immediate match; resting remainder on the best queue canceled after match pass
 - [x] Fill-or-Kill: order rejected entirely if not fully fillable at submission
 - [x] Good-For-Day: canceled by background thread (see `PruneGoodForDayOrders` in `Orderbook.cpp`)
 - [x] Market: if the opposite book is non-empty, converted in-place to GTC at the **worst** opposite price, then matched like a limit
