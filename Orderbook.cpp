@@ -5,7 +5,7 @@
 #include <ctime>
 
 void Orderbook::PruneGoodForDayOrders()
-{    
+{
     using namespace std::chrono;
     const auto end = hours(16);
 
