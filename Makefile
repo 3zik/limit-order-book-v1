@@ -6,11 +6,14 @@ SOURCES = main.cpp Orderbook.cpp
 orderbook: $(SOURCES)
 	$(CXX) $(CXXFLAGS) $(SOURCES) -o $@
 
-tests: tests.cpp Orderbook.cpp
-	$(CXX) $(CXXFLAGS) $^ \
+tests: test/test.cpp
+	$(CXX) $(CXXFLAGS) -g $< \
 		-lgtest -lgtest_main -pthread \
 		-o tests
 
+benchmark: bench/bench.cpp
+	$(CXX) $(CXXFLAGS) -g $< -pthread -o benchmark
+
 .PHONY: clean
 clean:
-	rm -f orderbook
+	rm -f orderbook tests benchmark

@@ -253,7 +253,7 @@ Trades Orderbook::MatchOrders()
 		auto& [_, bids] = *bids_.begin();
 		auto& order = bids.front();
 		if (order->GetOrderType() == OrderType::FillAndKill)
-			CancelOrder(order->GetOrderId());
+			CancelOrderInternal(order->GetOrderId());
 	}
 
 	if (!asks_.empty())
@@ -261,7 +261,7 @@ Trades Orderbook::MatchOrders()
 		auto& [_, asks] = *asks_.begin();
 		auto& order = asks.front();
 		if (order->GetOrderType() == OrderType::FillAndKill)
-			CancelOrder(order->GetOrderId());
+			CancelOrderInternal(order->GetOrderId());
 	}
 
 	return trades;

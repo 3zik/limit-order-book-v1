@@ -1,4 +1,6 @@
 orderbook
+tests
+benchmark
 
 # Object & build artifacts
 *.o
@@ -18,4 +20,5 @@ orderbook
 *.swp
 *.swo
 .DS_Store
+CLAUDE.md
 Thumbs.db
