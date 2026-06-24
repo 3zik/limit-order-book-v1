@@ -199,10 +199,10 @@ public:
 };
 
 
-class OrderbookTestsFixture : public googletest::TestWithParam<const char*> 
+class OrderbookTestsFixture : public googletest::TestWithParam<const char*>
 {
 private:
-    const static inline std::filesystem::path Root{ std::filesystem::current_path() };
+    const static inline std::filesystem::path Root{ std::filesystem::path(__FILE__).parent_path() };
     const static inline std::filesystem::path TestFolder{ "TestFiles" };
 public:
     const static inline std::filesystem::path TestFolderPath{ Root / TestFolder };
