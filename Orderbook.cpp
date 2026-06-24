@@ -271,7 +271,10 @@ Orderbook::Orderbook() : ordersPruneThread_{ [this] { PruneGoodForDayOrders(); }
 
 Orderbook::~Orderbook()
 {
-    shutdown_.store(true, std::memory_order_release);
+	{
+		std::scoped_lock ordersLock{ ordersMutex_ };
+		shutdown_.store(true, std::memory_order_release);
+	}
 	shutdownConditionVariable_.notify_one();
 	ordersPruneThread_.join();
 }
@@ -361,6 +364,8 @@ std::size_t Orderbook::Size() const
 
 OrderbookLevelInfos Orderbook::GetOrderInfos() const
 {
+	std::scoped_lock ordersLock{ ordersMutex_ };
+
 	LevelInfos bidInfos, askInfos;
 	bidInfos.reserve(orders_.size());
 	askInfos.reserve(orders_.size());
