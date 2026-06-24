@@ -197,8 +197,10 @@ Trades Orderbook::MatchOrders()
 		if (bids_.empty() || asks_.empty())
 			break;
 
-		auto& [bidPrice, bids] = *bids_.begin();
-		auto& [askPrice, asks] = *asks_.begin();
+		auto& [bidPriceKey, bids] = *bids_.begin();
+		auto& [askPriceKey, asks] = *asks_.begin();
+		const Price bidPrice = bidPriceKey;
+		const Price askPrice = askPriceKey;
 
 		if (bidPrice < askPrice)
 			break;

@@ -40,9 +40,9 @@ private:
     std::map<Price, OrderPointers, std::less<Price>> asks_;
     std::unordered_map<OrderId, OrderEntry> orders_;
     mutable std::mutex ordersMutex_;
-    std::thread ordersPruneThread_;
     std::condition_variable shutdownConditionVariable_;
     std::atomic<bool> shutdown_{ false };
+    std::thread ordersPruneThread_;
 
     void PruneGoodForDayOrders();
 
