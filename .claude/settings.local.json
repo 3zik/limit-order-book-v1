@@ -25,7 +25,11 @@
       "PowerShell(wsl.exe -e bash -lc \"ls /usr/lib/x86_64-linux-gnu/ 2>/dev/null | grep -i gtest; ls /usr/src/ 2>/dev/null; dpkg -L libgtest-dev | grep '\\\\.a$\\\\|\\\\.so'\")",
       "PowerShell(wsl.exe -e bash -lc \"cd ~/projects/limit-order-book-v1 && make tests 2>&1 | tail -60\")",
       "PowerShell(wsl.exe -e bash -lc \"cd ~/projects/limit-order-book-v1 && make clean && make tests 2>&1 | tail -40 && ./tests 2>&1 | tail -20\")",
-      "Read(///wsl.localhost/Ubuntu/proc/sys/vm/**)"
+      "Read(///wsl.localhost/Ubuntu/proc/sys/vm/**)",
+      "Bash(g++ -std=c++20 -Wall -Wextra -Wpedantic -O2 bench/bench.cpp -pthread -o benchmark)",
+      "Bash(mkdir -p /tmp/lobbench)",
+      "Bash(g++ -std=c++20 -Wall -Wextra -Wpedantic -O2 bench/bench.cpp -pthread -o /tmp/lobbench/benchmark.exe)",
+      "Bash(/tmp/lobbench/benchmark.exe *)"
     ]
   }
 }
