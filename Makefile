@@ -17,12 +17,12 @@ debug: $(SOURCES)
 	-fno-omit-frame-pointer \
 	$(SOURCES) -o debug
 
-# to work in WSL2, instead run $setarch x86_64 -R ./tsan
-tsan: $(SOURCES)
+# to work in WSL2, instead run: setarch x86_64 -R ./tsan
+tsan: test/tsan_harness.cpp Orderbook.cpp
 	$(CXX) $(COMMON_FLAGS) $(DEBUG_FLAGS) \
 	-fsanitize=thread \
 	-fno-omit-frame-pointer \
-	$(SOURCES) -o tsan
+	test/tsan_harness.cpp Orderbook.cpp -o tsan
 
 
 tests: test/test.cpp
