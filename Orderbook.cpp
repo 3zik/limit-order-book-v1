@@ -240,13 +240,11 @@ Trades Orderbook::MatchOrders()
         if (bids.empty())
         {
             bids_.erase(bidPrice);
-            data_.erase(bidPrice);
         }
 
         if (asks.empty())
         {
             asks_.erase(askPrice);
-            data_.erase(askPrice);
         }
 	}
 
